@@ -19,5 +19,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  transform:rotate(45deg);
+  box-shadow: 1px 1px 0 #000000;
 }
 </style>

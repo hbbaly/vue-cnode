@@ -2,6 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const vueLoaderConfig = require('./vue-loader.conf')
 const isProd = process.env.NODE_ENV === 'production'
 function resolve (dir) {
@@ -75,15 +76,25 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
+      // {
+      //   test: /\.css$/,
+      //   use: isProd
+      //     ? ExtractTextPlugin.extract({
+      //         use: 'css-loader?minimize',
+      //         fallback: 'vue-style-loader'
+      //       })
+      //     : ['vue-style-loader', 'css-loader']
+      // },
       {
         test: /\.css$/,
-        use: isProd
-          ? ExtractTextPlugin.extract({
-              use: 'css-loader?minimize',
-              fallback: 'vue-style-loader'
-            })
-          : ['vue-style-loader', 'css-loader']
-      },
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+                { loader: 'css-loader', options: { importLoaders: 1 } },
+                'postcss-loader'
+            ]
+        })
+      }
     ]
   },
   node: {
