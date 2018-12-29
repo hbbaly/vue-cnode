@@ -1,8 +1,8 @@
 'use strict'
 import axios from 'axios'
 import qs from 'qs'
-import config from '../config'
-import base from './base'
+import config from '../config/index'
+console.log(config)
 axios.interceptors.request.use(config => {
   // loading
   return config
@@ -38,9 +38,6 @@ function checkCode (res) {
   if (res.status === -404) {}
   if (res.data && (!res.data.success)) {}
   return res
-}
-function postByToken (url, data, token) {
-  
 }
 
 export default {
