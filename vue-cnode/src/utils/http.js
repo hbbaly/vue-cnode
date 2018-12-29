@@ -2,7 +2,6 @@
 import axios from 'axios'
 import qs from 'qs'
 import config from '../config/index'
-console.log(config)
 axios.interceptors.request.use(config => {
   // loading
   return config

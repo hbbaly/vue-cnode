@@ -5,7 +5,7 @@ const state = {
   topicList: []
 }
 
-const getter = {
+const getters = {
   topicList: state => {
     return state.topicList
   }
@@ -26,7 +26,7 @@ const mutations = {
 }
 export default {
   state,
-  getter,
+  getters,
   actions,
   mutations
 }
