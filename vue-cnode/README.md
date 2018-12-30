@@ -24,6 +24,13 @@ npm run fix
 
 ## 技术栈
 
+Vue+Vue-Router+Vuex+stylus+better-scroll
+
+## 项目示例
+
+![cnode](./README/cnode1.png 'cnode1')
 
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 说明
+
+计划会做pc+m端，也会做nuxt，ssr，typescript的版本。
