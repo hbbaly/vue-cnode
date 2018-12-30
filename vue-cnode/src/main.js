@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/index'
+import 'lib-flexible'
 import './stylus/reset.styl'
 import filters from './filters/allFilters'
 Vue.config.productionTip = false

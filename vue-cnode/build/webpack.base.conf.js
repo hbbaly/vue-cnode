@@ -76,25 +76,25 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
-      // {
-      //   test: /\.css$/,
-      //   use: isProd
-      //     ? ExtractTextPlugin.extract({
-      //         use: 'css-loader?minimize',
-      //         fallback: 'vue-style-loader'
-      //       })
-      //     : ['vue-style-loader', 'css-loader']
-      // },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-                { loader: 'css-loader', options: { importLoaders: 1 } },
-                'postcss-loader'
-            ]
-        })
+        use: isProd
+          ? ExtractTextPlugin.extract({
+              use: 'css-loader?minimize',
+              fallback: 'vue-style-loader'
+            })
+          : ['vue-style-loader', 'css-loader']
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ExtractTextPlugin.extract({
+      //       fallback: 'style-loader',
+      //       use: [
+      //           { loader: 'css-loader', options: { importLoaders: 1 } },
+      //           'postcss-loader'
+      //       ]
+      //   })
+      // },
       {
         test: /\.styl$/, 
         loader: 'style-loader!css-loader!stylus-loader',

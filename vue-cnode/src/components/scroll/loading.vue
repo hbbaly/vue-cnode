@@ -2,7 +2,7 @@
   <div class="mf-loading-container">
     <!-- <img src="./loading.gif"> -->
     <img
-      src="./loading1.png"
+      src="./loading.gif"
       alt="">
     <span>正在刷新</span>
   </div>
