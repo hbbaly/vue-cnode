@@ -30,6 +30,7 @@ Vue+Vue-Router+Vuex+stylus+better-scroll
 
 ![cnode](./README/cnode1.png 'cnode1')
 
+目前只做了首页，今后还会持续更新。
 
 ## 说明
 
