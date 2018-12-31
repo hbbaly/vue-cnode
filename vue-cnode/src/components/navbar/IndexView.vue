@@ -25,9 +25,26 @@ export default {
     navList: {
       type: Array,
       default () {
-        return []
+        return [
+          {
+            path: '/',
+            title: '首页'
+          },
+          {
+            path: 'https://cnodejs.org/getstart',
+            title: '新手入门'
+          },
+          {
+            path: 'https://cnodejs.org/api',
+            title: 'API'
+          },
+          {
+            path: 'https://cnodejs.org/about',
+            title: '关于'
+          }
+        ]
       },
-      required: true
+      required: false
     }
   },
   data () {

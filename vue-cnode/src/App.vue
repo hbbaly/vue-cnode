@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+    <Nav/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Nav from '@/components/navbar/IndexView'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Nav
+  }
 }
 </script>
 

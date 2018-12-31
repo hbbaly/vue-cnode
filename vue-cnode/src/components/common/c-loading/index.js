@@ -6,7 +6,7 @@ import Vue from 'vue'
 const LoadingConstructor = Vue.extend(loadingComponent)
 
 // 定义弹出组件的函数 接收2个参数, 要显示的文本 和 显示时间
-function showLoading (bool = false, content = '', postop = 30) {
+function showLoading (bool = false, content = '', postop = 0) {
   let hasLoading = document.getElementsByClassName('loading')
   if (hasLoading.length > 0) {
     hasLoading[0].parentNode.removeChild(hasLoading[0])
