@@ -1,4 +1,6 @@
 import common from './common'
+import detail from './detail'
 export default {
-  common
+  common,
+  detail
 }

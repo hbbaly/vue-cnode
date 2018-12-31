@@ -25,7 +25,9 @@
             <img
               :src="item.author.avatar_url"
               class="__avatar ui-img" >
-            <div class="__title">
+            <div
+              class="__title"
+              @click="jumpDetail(item.id)">
               <span
                 v-if="tab!=='dev'"
                 :class="{'__tab_bg':item.top}"
@@ -89,7 +91,7 @@ export default {
     ...mapGetters(['topicList'])
   },
   async mounted () {
-    await this.getTopics({ page: this.page, tab: this.tab, limit: this.limit })
+    await this.requestTopic(true)
     await this.$nextTick(() => {
       let h = document.documentElement.clientHeight || document.body.clientHeight
       this.$refs.topicScroll.style.height = h - 150 + 'px'
@@ -99,17 +101,25 @@ export default {
     ...mapActions(['getTopics']),
     ...mapMutations(['resetTpics']),
     chooseTab (val) {
-      this.resetTpics()
+      // this.resetTpics()
       this.tab = val
-      this.getTopics({page: this.page, tab: this.tab, limit: this.limit})
+      this.requestTopic(true)
     },
     pullUpAction () {
       this.page++
-      this.getTopics({page: this.page, tab: this.tab, limit: this.limit})
+      this.requestTopic()
     },
     pullDownAction () {
       this.page = 1
-      this.getTopics({page: this.page, tab: this.tab, limit: this.limit})
+      this.requestTopic()
+    },
+    async requestTopic (isLoading = false) {
+      if (isLoading) this.$loading(true, '', 150)
+      await this.getTopics({page: this.page, tab: this.tab, limit: this.limit})
+      if (isLoading) this.$loading(false)
+    },
+    jumpDetail (id) {
+      this.$router.push(`/user/topicdetail/${id}`)
     }
   }
 }

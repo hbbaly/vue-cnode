@@ -7,7 +7,9 @@ import store from './store/index'
 import 'lib-flexible'
 import './stylus/reset.styl'
 import filters from './filters/allFilters'
+import C_UI from './components/common/index'
 Vue.config.productionTip = false
+Vue.use(C_UI)
 Object.keys(filters).forEach((key) => Vue.filter(key, filters[key]))
 /* eslint-disable no-new */
 new Vue({
