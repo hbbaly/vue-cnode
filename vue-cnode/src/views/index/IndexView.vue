@@ -1,7 +1,7 @@
 <template>
   <div class="page page-index">
     <header>
-      <Nav :navList = "navList"/>
+      <Nav/>
     </header>
     <div class="container">
       <TopicList />

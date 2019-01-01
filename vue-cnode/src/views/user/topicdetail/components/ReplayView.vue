@@ -9,7 +9,7 @@
         <img
           :src="item.author.avatar_url"
           class="__avatar"
-          @click="jumpPersonal(item.author.loginname)" >
+          @click="jumpUser(item.author.loginname)" >
         <p class="__name">{{ item.author.loginname }}</p>
         <p class="__floor">{{ index }}楼</p>
         <p class="__time">{{ item.create_at|replayDay }}</p>
@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    jumpPersonal (name) {
+    jumpUser (name) {
       this.$router.push(`/user/${name}`)
     }
   }

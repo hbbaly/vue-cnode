@@ -23,7 +23,7 @@
  *
  * @desc 组件描述
  * @author  hbb
- * @date 2018.11.10
+ * @date 2019.1.1
  *
  * @param {String}  [content]  - 提示信息
  *
@@ -48,7 +48,6 @@ export default{
     if (this.loadingSwitch) {
       this.$nextTick(() => {
         // setTimeout(() => {
-        console.log(this.$refs.loading, this.num)
         this.$refs.loading.style.top = `${this.postop}px`
         // }, 200)
       })

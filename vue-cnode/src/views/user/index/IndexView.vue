@@ -6,35 +6,54 @@
       :score="userInfo.score"
       :time="userInfo.create_at"
       :github-name="userInfo.githubUsername"
-      :collection="userInfo.recent_replies.length"/>
+      :collection="collectionNum"/>
+    <div class="__container">
+      <Topic
+        :create-topic="userInfo.recent_replies"
+        :join-topic="userInfo.recent_topics" />
+    </div>
   </div>
 </template>
 <script>
 import Info from './components/UserInfoView'
 import { mapActions, mapGetters } from 'vuex'
+import Topic from './components/TopicView'
 export default {
   name: 'UserInfo',
   components: {
-    Info
+    Info,
+    Topic
   },
   data () {
-    return {}
+    return {
+      collectionNum: 0
+    }
   },
   computed: {
     ...mapGetters(['userInfo'])
   },
-  async mounted () {
-    this.$loading(true, '', 100)
-    await this.getUserInfo({name: this.$route.params.name})
-    this.$loading(false)
+  watch: {
+    '$route' (val) {
+      this.requestData()
+    }
+  },
+  mounted () {
+    this.requestData()
   },
   methods: {
-    ...mapActions(['getUserInfo'])
+    ...mapActions(['getUserInfo']),
+    async requestData () {
+      this.$loading(true, '', 85)
+      await this.getUserInfo({name: this.$route.params.name})
+      this.collectionNum = this.userInfo.recent_replies.length
+      this.$loading(false)
+    }
   }
 }
 </script>
 <style lang="stylus">
 .page-user-info
-  margin:0 10px
+  margin:40px 10px 0
+  padding-top:20px
   background: #fff
 </style>

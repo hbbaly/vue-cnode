@@ -24,4 +24,7 @@ export default {
   color: #2c3e50;
   background:#f6f6f6
 }
+.page{
+  padding-bottom:40px
+}
 </style>

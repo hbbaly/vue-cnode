@@ -8,49 +8,26 @@
     <div
       ref="topicScroll"
       class="__bd">
-      <Scroll
-        :data="topicList"
-        :pull-up-load="pullUp"
-        :pull-down-refresh="pullDown"
-        direction="vertical"
-        style="width:100%;overflow: hidden;"
+      <Topic
+        :list="topicList"
+        :pull-down="pullDown"
+        :pull-up="pullUp"
         @pullDownAction="pullDownAction"
-        @pullUpAction="pullUpAction">
-        <div
-          v-for="(item,index) in topicList"
-          :key="index"
-          :class="{'_border':index===0}"
-          class="topic-list">
-          <div class="__content">
-            <img
-              :src="item.author.avatar_url"
-              class="__avatar ui-img" >
-            <div
-              class="__title"
-              @click="jumpDetail(item.id)">
-              <span
-                v-if="tab!=='dev'"
-                :class="{'__tab_bg':item.top}"
-                class="__tab">{{ item.tab|dealTab(item.top) }}</span>
-              <p class="__cont">{{ item.title }}</p>
-            </div>
-            <span class="__replay">{{ item.last_reply_at|replayDay }}</span>
-          </div>
-        </div>
-      </Scroll>
+        @jumpDetail="jumpDetail"
+        @jumpUser="jumpUser"
+        @pullUpAction="pullUpAction" />
     </div>
   </div>
 </template>
 <script>
 import {mapGetters, mapActions, mapMutations} from 'vuex'
-import Scroll from '@/components/scroll/Scroll'
 import TabList from '@/components/tablist/IndexView'
-
+import Topic from '@/components/topiclist/IndexView'
 export default {
-  name: 'TopicList',
+  name: 'ALLTopic',
   components: {
-    Scroll,
-    TabList
+    TabList,
+    Topic
   },
   data () {
     return {
@@ -120,6 +97,9 @@ export default {
     },
     jumpDetail (id) {
       this.$router.push(`/user/topicdetail/${id}`)
+    },
+    jumpUser (name) {
+      this.$router.push(`/user/${name}`)
     }
   }
 }
@@ -135,52 +115,5 @@ export default {
       left: 0
       height:100%
       width:100%
-      .topic-list
-        display:flex
-        align-items:center
-        padding: 20px
-        font-size: 28px
-        border-top: 2px solid #f0f0f0
-        .__content
-          position relative;
-          display:flex
-          align-items:center
-          width:100%
-          .__avatar
-            width:60px
-            height:60px
-            margin-right:10px
-            border-radius: 6px
-          .__title
-            display :flex
-            align-items :center
-            text-align:left
-            .__tab
-              padding: 10px
-              font-size:20px
-              color: #999
-              background-color: #e5e5e5
-              border-radius: 3px
-            .__tab_bg
-              color: #fff
-              background: #80bd01
-            .__cont
-              width:480px
-              margin-left:10px
-              overflow: hidden
-              white-space: nowrap
-              text-overflow: ellipsis
-              color: #333
-              font-size:26px
-          .__replay
-            position absolute
-            top:0;
-            right:0
-            color: #778087
-            font-size:22px
-            line-height 60px
-            white-space: nowrap
-      ._border
-        border:0
 
 </style>
