@@ -1,6 +1,6 @@
 import common from './common'
-import detail from './detail'
+import user from './user'
 export default {
   common,
-  detail
+  user
 }

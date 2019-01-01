@@ -1,5 +1,4 @@
 const context = require.context('@/store/types', true, /\w*\.js$/)
-console.log(context)
 const types = {}
 
 const assign = Object.assign

@@ -22,14 +22,14 @@ const replayDay = (val, type = 'replay') => {
     } else if (replayHour >= 720 && replayHour < 24 * 30 * 12) {
       // 向下取整
       let month = Math.ceil(replayHour / 24 / 30)
-      return `${month}月前`
+      return `${month}个月前`
       // return `${replayHour}小时前`
     } else if (replayHour >= 24 * 30 * 12) {
       // 年份向下取整
       let year = Math.floor(replayHour / 24 / 30 / 12)
       return `${year}年前`
     } else {
-      return `${replayHour}小时前`
+      return `${replayHour}个小时前`
     }
   } catch (err) {
     return '没有评论'

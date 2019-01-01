@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/views/index/IndexView'
 import Detail from '@/views/user/topicdetail/IndexView'
+import Info from '@/views/user/index/IndexView'
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +18,11 @@ export default new Router({
       path: '/user/topicdetail/:id',
       name: 'Detail',
       component: Detail
+    },
+    {
+      path: '/user/:name',
+      name: 'Info',
+      component: Info
     }
   ]
 })
