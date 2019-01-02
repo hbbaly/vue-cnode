@@ -13,7 +13,7 @@ export default {
   'name': COMPONENT_NAME
 }
 </script>
-<style lang="less" scoped >
+<style lang="stylus" scoped >
 .mf-loading-container {
   img {
     width: 40px;

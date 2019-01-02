@@ -5,13 +5,16 @@
   </div>
 </template>
 
-<script>
-import Nav from '@/components/navbar/IndexView'
-export default {
-  name: 'App',
+<script lang='ts'>
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import Nav from './components/navbar/IndexView.vue'
+@Component({
   components: {
     Nav
   }
+})
+export default class App extends Vue {
 }
 </script>
 

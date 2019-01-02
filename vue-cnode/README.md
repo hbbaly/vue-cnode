@@ -1,6 +1,6 @@
 # cnode-vue
 
-> 使用vue写cnode网站, 我尽量用工作中规范去要求我改写这个项目，包括使用 `BEM` 来管理class类名,使用eslint来管理代码规范,只构建了三个页面,却使用了 vuex并且分了模块，对一些命名也进行了一定的规范，页面的组件划分，代码的重构等等一些自己的思想。
+> 使用vue写cnode网站, 我尽量用工作中规范去要求我改写这个项目，包括使用 `BEM` 来管理class类名,使用eslint来管理代码规范,只构建了三个页面,使用了 vuex并且分了模块，对一些命名也进行了一定的规范，页面的组件划分，代码的重构等等一些自己的思想。
 
 ## Build Setup
 
@@ -27,7 +27,7 @@ npm run fix
 Vue2+Vue-Router+Vuex+webpack+ES6/7+axios+stylus+better-scroll
 ## 接口说明
 
-接口全部来自于 cnode网站中的 [API](https://cnodejs.org/api 'API')
+  接口全部来自于 cnode网站中的 [API](https://cnodejs.org/api 'API')
 
 
 ## 项目目录
@@ -97,7 +97,9 @@ Vue2+Vue-Router+Vuex+webpack+ES6/7+axios+stylus+better-scroll
 ## 项目示例
 
 ![cnode](./README/cnode1.png 'cnode1')
+
 ![cnode](./README/cnode2.png 'cnode1')
+
 ![cnode](./README/cnode3.png 'cnode1')
 
 目前只做了这三个页面，今后还会持续更新。

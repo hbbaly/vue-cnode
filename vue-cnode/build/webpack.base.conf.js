@@ -23,7 +23,7 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.ts'
   },
   output: {
     path: config.build.assetsRoot,
@@ -33,7 +33,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.styl'],
+    extensions: ['.js', '.vue', '.json', '.styl', '.ts'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -85,16 +85,13 @@ module.exports = {
             })
           : ['vue-style-loader', 'css-loader']
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ExtractTextPlugin.extract({
-      //       fallback: 'style-loader',
-      //       use: [
-      //           { loader: 'css-loader', options: { importLoaders: 1 } },
-      //           'postcss-loader'
-      //       ]
-      //   })
-      // },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
+      },
       {
         test: /\.styl$/, 
         loader: 'style-loader!css-loader!stylus-loader',

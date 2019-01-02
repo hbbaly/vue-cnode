@@ -16,15 +16,16 @@
           <span
             v-if="item.tab&&item.tab!=='dev'"
             :class="{'__tab_bg':item.top}"
-            class="__tab">{{ item.tab|dealTab(item.top) }}</span>
+            class="__tab" />
           <p class="__cont">{{ item.title }}</p>
         </div>
-        <span class="__replay">{{ item.last_reply_at|replayDay }}</span>
+        <span class="__replay" />
       </div>
     </div>
   </div>
 </template>
 <script>
+// import Base from '@/utils/base.js'
 export default {
   props: {
     list: {
