@@ -4,8 +4,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "src/components/scroll"
+    "node_modules"
   ],
   "compilerOptions": {
     "strictPropertyInitialization": false,

@@ -8,35 +8,35 @@
     <div
       ref="topicScroll"
       class="__bd">
-      <Topic
+      <!-- <Topic
         :list="topicList"
         :pull-down="pullDown"
         :pull-up="pullUp"
         @pullDownAction="pullDownAction"
         @jumpDetail="jumpDetail"
         @jumpUser="jumpUser"
-        @pullUpAction="pullUpAction" />
+        @pullUpAction="pullUpAction" /> -->
     </div>
   </div>
 </template>
 <script>
-import {mapGetters, mapActions, mapMutations} from 'vuex'
+import { Vue, Component } from 'vue-property-decorator'
+// import {mapGetters, mapActions, mapMutations} from 'vuex'
 import TabList from '@/components/tablist/IndexView'
 import Topic from '@/components/topiclist/IndexView'
-export default {
-  name: 'ALLTopic',
+@Component({
   components: {
     TabList,
     Topic
-  },
-  data () {
-    return {
-      page: 1,
-      limit: 15,
-      tab: 'all',
-      pullDown: true,
-      pullUp: true,
-      tabList: [
+  }
+})
+export default class ALLTopic extends Vue {
+      page = 1
+      limit = 15
+      tab = 'all'
+      pullDown = true
+      pullUp = true
+      tabList = [
         {
           title: '全部',
           tab: 'all'
@@ -62,46 +62,44 @@ export default {
           tab: 'dev'
         }
       ]
-    }
-  },
-  computed: {
-    ...mapGetters(['topicList'])
-  },
-  async mounted () {
-    await this.requestTopic(true)
-    await this.$nextTick(() => {
-      let h = document.documentElement.clientHeight || document.body.clientHeight
-      this.$refs.topicScroll.style.height = h - 150 + 'px'
-    })
-  },
-  methods: {
-    ...mapActions(['getTopics']),
-    ...mapMutations(['resetTpics']),
-    chooseTab (val) {
+  // get computed: {
+  //   ...mapGetters(['topicList'])
+  // },
+      async mounted () {
+        await this.requestTopic(true)
+        await this.$nextTick(() => {
+          let h = document.documentElement.clientHeight || document.body.clientHeight
+          this.$refs.topicScroll.style.height = h - 150 + 'px'
+        })
+      }
+  // methods: {
+  //   ...mapActions(['getTopics']),
+  //   ...mapMutations(['resetTpics']),
+      chooseTab (val) {
       // this.resetTpics()
-      this.tab = val
-      this.requestTopic(true)
-    },
-    pullUpAction () {
-      this.page++
-      this.requestTopic()
-    },
-    pullDownAction () {
-      this.page = 1
-      this.requestTopic()
-    },
-    async requestTopic (isLoading = false) {
-      if (isLoading) this.$loading(true, '', 150)
-      await this.getTopics({page: this.page, tab: this.tab, limit: this.limit})
-      if (isLoading) this.$loading(false)
-    },
-    jumpDetail (id) {
-      this.$router.push(`/user/topicdetail/${id}`)
-    },
-    jumpUser (name) {
-      this.$router.push(`/user/${name}`)
-    }
-  }
+        this.tab = val
+        this.requestTopic(true)
+      }
+      pullUpAction () {
+        this.page++
+        this.requestTopic()
+      }
+      pullDownAction () {
+        this.page = 1
+        this.requestTopic()
+      }
+      async requestTopic (isLoading = false) {
+        if (isLoading) this.$loading(true, '', 150)
+        // await this.getTopics({page: this.page, tab: this.tab, limit: this.limit})
+        if (isLoading) this.$loading(false)
+      }
+      jumpDetail (id) {
+        this.$router.push(`/user/topicdetail/${id}`)
+      }
+      jumpUser (name) {
+        this.$router.push(`/user/${name}`)
+      }
+  // }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
