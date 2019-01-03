@@ -1,7 +1,7 @@
 <template>
   <div class="page page-index">
     <header>
-      <Nav/>
+      <Header/>
     </header>
     <div class="container">
       <div class="__hd">
@@ -30,6 +30,26 @@ import TabList from '~/components/tablist/IndexView'
 import Topic from '~/components/topiclist/IndexView'
 import axios from 'axios'
 export default {
+  // 首页头部SEO
+  head: {
+    title: 'CNode：Node.js专业中文社区',
+    meta: [
+      { hid: 'description', name: 'description', content: 'CNode：Node.js专业中文社区' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'keywords', content: 'nodejs, node, express, connect, socket.io' },
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '//static2.cnodejs.org/public/images/cnode_icon_32.png' }
+    ],
+    noscript: [
+      { innerHTML: 'Body No Scripts', body: true }
+    ],
+    script: [
+      { src: '/head.js' },
+      // Supported since 1.0
+      { src: '/body.js', body: true },
+    ]
+  },
   // asyncData只能在页面上，不能在组建内
   asyncData({ context }) {
     return axios.get(`https://cnodejs.org/api/v1/topics?page=1&limit=15`).then(res => {
@@ -79,7 +99,7 @@ export default {
   async mounted () {
     await this.$nextTick(() => {
       let h = document.documentElement.clientHeight || document.body.clientHeight
-      this.$refs.topicScroll.style.height = h - 150 + 'px'
+      this.$refs.topicScroll.style.height = h - 132 + 'px'
     })
   },
    methods: {
