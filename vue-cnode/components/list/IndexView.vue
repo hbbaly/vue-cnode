@@ -76,7 +76,7 @@ export default {
         color: #fff
         background: #80bd01
       .__cont
-        width:480px
+        width:450px
         margin-left:10px
         overflow: hidden
         white-space: nowrap

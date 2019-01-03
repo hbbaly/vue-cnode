@@ -21,7 +21,7 @@ module.exports = {
   /** 
    * plugins
    */
-  plugins: ['~/plugins/flexible.js','~/plugins/better-scroll.js'],
+  plugins: ['~/plugins/flexible.js','~/plugins/better-scroll.js','~/plugins/allFilters.js'],
   /*
   ** Build configuration
   */
