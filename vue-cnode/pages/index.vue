@@ -121,7 +121,7 @@ export default {
     async requestTopic (isLoading = false) {
       // if (isLoading) this.$loading(true, '', 150)
       const data = await axios.get(`https://cnodejs.org/api/v1/topics?page=${this.page}&tab=${this.tab}&limit=${this.limit}`).then(res => res.data.data)
-      this.topicList = [...this.topicList,...data]
+      this.topicList = isLoading&&this.page===1?data:[...this.topicList,...data]
       // console.log(this.topicList)
       // if (isLoading) this.$loading(false)
     },

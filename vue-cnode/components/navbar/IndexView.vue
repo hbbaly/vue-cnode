@@ -65,7 +65,7 @@ export default {
 <style lang="stylus" scoped>
   .module-nav
     position: relative
-    z-index: 999
+    z-index: 10
     width:100%
     background: #444
     font-size: 26px
