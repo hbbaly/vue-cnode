@@ -7,7 +7,7 @@
       class="replay-item">
       <div class="__top">
         <img
-          :src="item.author.avatar_url"
+          v-lazy="item.author.avatar_url"
           class="__avatar"
           @click="jumpUser(item.author.loginname)" >
         <p class="__name">{{ item.author.loginname }}</p>

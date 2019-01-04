@@ -23,6 +23,7 @@
     "eslint-plugin-vue": "^4.0.0",
     "postcss-px2rem": "^0.3.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vue-lazyload": "^1.2.6"
   }
 }

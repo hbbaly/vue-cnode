@@ -2,7 +2,7 @@
   <div class="user-info">
     <div class="__hd">
       <img
-        :src="src"
+        v-lazy="src"
         class="__avatar"
         alt="">
       <p class="__name">{{ name }}</p>

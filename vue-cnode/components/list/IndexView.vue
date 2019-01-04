@@ -7,7 +7,7 @@
       class="topic-list">
       <div class="__content">
         <img
-          :src="item.author.avatar_url"
+          v-lazy="item.author.avatar_url"
           class="__avatar ui-img"
           @click="jumpUser(item.author.loginname)">
         <div
