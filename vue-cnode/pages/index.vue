@@ -29,6 +29,7 @@ import Header from '~/components/navbar/IndexView.vue'
 import TabList from '~/components/tablist/IndexView'
 import Topic from '~/components/topiclist/IndexView'
 import axios from 'axios'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   // 首页头部SEO
   head: {
@@ -51,11 +52,11 @@ export default {
     ]
   },
   // asyncData只能在页面上，不能在组建内
-  asyncData({ context }) {
-    return axios.get(`https://cnodejs.org/api/v1/topics?page=1&limit=15`).then(res => {
-      return { topicList: res.data.data }
-    })
-  },
+  // asyncData({ context }) {
+  //   // return axios.get(`https://cnodejs.org/api/v1/topics?page=1&limit=15`).then(res => {
+  //   //   return { topicList: res.data.data }
+  //   // })
+  // },
   components: {
     Header,
     TabList,
@@ -96,15 +97,19 @@ export default {
       ]
     }
   },
+  computed:{
+    ...mapGetters(['topicList'])
+  },
   async mounted () {
+    // await this.requestTopic({page:this.page, limit: this.limit, tab: this.tab})
     await this.$nextTick(() => {
       let h = document.documentElement.clientHeight || document.body.clientHeight
       this.$refs.topicScroll.style.height = h - 132 + 'px'
     })
   },
    methods: {
-    // ...mapActions(['getTopics']),
-    // ...mapMutations(['resetTpics']),
+    ...mapActions(['getTopics']),
+    ...mapMutations(['resetTpics']),
     chooseTab (val) {
       // this.resetTpics()
       this.page = 1
@@ -121,8 +126,9 @@ export default {
     },
     async requestTopic (isLoading = false) {
       // if (isLoading) this.$loading(true, '', 150)
-      const data = await axios.get(`https://cnodejs.org/api/v1/topics?page=${this.page}&tab=${this.tab}&limit=${this.limit}`).then(res => res.data.data)
-      this.topicList = isLoading&&this.page===1?data:[...this.topicList,...data]
+      await this.getTopics({page:this.page, limit: this.limit, tab: this.tab})
+      // const data = await axios.get(`https://cnodejs.org/api/v1/topics?page=${this.page}&tab=${this.tab}&limit=${this.limit}`).then(res => res.data.data)
+      // this.topicList = isLoading&&this.page===1?data:[...this.topicList,...data]
       // console.log(this.topicList)
       // if (isLoading) this.$loading(false)
     },
