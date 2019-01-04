@@ -107,6 +107,7 @@ export default {
     // ...mapMutations(['resetTpics']),
     chooseTab (val) {
       // this.resetTpics()
+      this.page = 1
       this.tab = val
       this.requestTopic(true)
     },

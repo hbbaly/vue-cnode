@@ -21,7 +21,7 @@ module.exports = {
   /** 
    * plugins
    */
-  plugins: ['~/plugins/flexible.js','~/plugins/better-scroll.js','~/plugins/allFilters.js','~/plugins/vue-lazyload.js'],
+  plugins: [{ src: '~/plugins/flexible.js', ssr: false },{ src: '~/plugins/better-scroll.js', ssr: false },{ src: '~/plugins/allFilters.js', ssr: true },{ src: '~/plugins/vue-lazyload.js', ssr: false }],
   /*
   ** Build configuration
   */
