@@ -111,7 +111,7 @@ export default {
     ...mapActions(['getTopics']),
     ...mapMutations(['resetTpics']),
     chooseTab (val) {
-      // this.resetTpics()
+      this.resetTpics()
       this.page = 1
       this.tab = val
       this.requestTopic(true)

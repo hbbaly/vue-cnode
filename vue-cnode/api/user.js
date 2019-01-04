@@ -3,7 +3,6 @@ import http from '@/utils/http'
 export default {
   // 首页获取用户详情
   getUserInfo: (data) => {
-    console.log(data,'hbb')
     return http.get(`user/${data.name}`)
   },
   // 首页获取文章详情

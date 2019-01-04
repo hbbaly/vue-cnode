@@ -19,12 +19,12 @@
 </template>
 
 <script>
-// import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Header from '~/components/navbar/IndexView.vue'
 import Title from '~/components/topicdetail/TitleView'
 import Content from '~/components/topicdetail/ContentView'
 import Replay from '~/components/topicdetail/ReplayView'
-import axios from 'axios'
+// import axios from 'axios'
 export default{
   name: 'TopicDetail',
   head () {
@@ -35,11 +35,15 @@ export default{
       ],
     }
   },
-  asyncData({ params }) {
-    return axios.get(`https://cnodejs.org/api/v1/topic/${params.id}`).then(res => {
-      return { topicDetail: res.data.data }
-    })
+   // fetch 来操纵 store内数据
+  fetch ({ store, params }) {
+    store.dispatch('user/getTopicDetail',{id:params.id})
   },
+  // asyncData({ params }) {
+  //   return axios.get(`https://cnodejs.org/api/v1/topic/${params.id}`).then(res => {
+  //     return { topicDetail: res.data.data }
+  //   })
+  // },
   components: {
     Header,
     Title,
@@ -55,9 +59,11 @@ export default{
   // },
   computed: {
     // ...mapGetters(['topicDetail'])
+     topicDetail () { 
+      return this.$store.state.user.topicDetail 
+    }
   },
   async mounted () {
-    console.log(this)
     // this.$loading(true)
     // await this.getTopicDetail({id: this.$route.params.id})
     // this.$loading(false)
