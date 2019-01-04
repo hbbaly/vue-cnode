@@ -129,7 +129,6 @@ export default {
       await this.getTopics({page:this.page, limit: this.limit, tab: this.tab})
       // const data = await axios.get(`https://cnodejs.org/api/v1/topics?page=${this.page}&tab=${this.tab}&limit=${this.limit}`).then(res => res.data.data)
       // this.topicList = isLoading&&this.page===1?data:[...this.topicList,...data]
-      // console.log(this.topicList)
       // if (isLoading) this.$loading(false)
     },
     jumpDetail (id) {

@@ -20,7 +20,7 @@
 <script>
 import Header from '~/components/navbar/IndexView.vue'
 import Info from '~/components/user/UserInfoView'
-// import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Topic from '~/components/user/TopicView'
 import axios from 'axios'
 export default {
@@ -35,12 +35,10 @@ export default {
         { name: 'keywords', content: 'nodejs, node, express, connect, socket.io' },
       ],
     }
-    
   },
-  asyncData({ params }) {
-    return axios.get(`https://cnodejs.org/api/v1/user/${params.name}`).then(res => {
-      return { userInfo: res.data.data }
-    })
+  // fetch 来操纵 store内数据
+  fetch ({ store, params }) {
+    store.dispatch('user/getUserInfo',{name:params.name})
   },
   components: {
     Header,
@@ -52,8 +50,14 @@ export default {
       collectionNum: 0
     }
   },
+  // computed: {
+  //   ...mapGetters(['user.userInfo'])
+  // },
+  //  要分模块的话，这样写，
   computed: {
-    // ...mapGetters(['userInfo'])
+    userInfo () { 
+      return this.$store.state.user.userInfo 
+    }
   },
   watch: {
     '$route' (val) {
@@ -61,16 +65,19 @@ export default {
     }
   },
   mounted () {
-    this.requestData()
+    // this.requestData()
   },
   methods: {
-    // ...mapActions(['getUserInfo']),
-    async requestData () {
-      // this.$loading(true, '', 85)
-      // await this.getUserInfo({name: this.$route.params.name})
-      // this.collectionNum = this.userInfo.recent_replies.length
-      // this.$loading(false)
-    }
+    // ...mapActions({getUserInfo:'user/getUserInfo'}),
+    // ...mapMutations({
+    //   toggle: 'todos/toggle'
+    // })
+    // async requestData () {
+    //   // this.$loading(true, '', 85)
+    //   await this.getUserInfo({name: this.$route.params.name})
+    //   // this.collectionNum = this.userInfo.recent_replies.length
+    //   // this.$loading(false)
+    // }
   }
 }
 </script>
