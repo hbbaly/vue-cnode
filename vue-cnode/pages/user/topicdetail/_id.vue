@@ -27,6 +27,14 @@ import Replay from '~/components/topicdetail/ReplayView'
 import axios from 'axios'
 export default{
   name: 'TopicDetail',
+  head () {
+    return {
+      title: this.topicDetail.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.topicDetail.title }
+      ],
+    }
+  },
   asyncData({ params }) {
     return axios.get(`https://cnodejs.org/api/v1/topic/${params.id}`).then(res => {
       return { topicDetail: res.data.data }
@@ -38,6 +46,13 @@ export default{
     Content,
     Replay
   },
+  // 是否在渲染前滚动到页面你顶部
+  scrollToTop: false,
+  // trransition： 用来控制页面过度
+  // transition: {
+  //   name: 'page',
+  //   mode: 'out-in'
+  // },
   computed: {
     // ...mapGetters(['topicDetail'])
   },

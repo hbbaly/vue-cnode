@@ -26,3 +26,9 @@ hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid 
 a {color: #25a4bb;text-decoration: none}
 img {display: block;width: 100%;height: 100%;}
 a,html,body,input,textarea {font-family: PingFang-Medium,PingFangSC-Regular,Helvetica,Droid Sans,Arial,sans-serif;}
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}

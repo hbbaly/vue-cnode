@@ -27,6 +27,7 @@ module.exports = {
   */
 
   build: {
+    analyze: true,
     /*
     ** Run ESLint on save
     */
